@@ -1,0 +1,5 @@
+{
+  "name": "TaskAssist Pro",
+  "description": "Project Manager and Task Assist Bot with project history logging.",
+  "requestFramePermissions": ["microphone"]
+}

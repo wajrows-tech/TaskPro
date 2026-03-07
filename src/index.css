@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", serif;
+}
+
+/* ── Design Tokens ──────────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --surface-bg: #F8F7F4;
+  --surface-card: #FFFFFF;
+  --surface-sidebar: #1A1A2E;
+  --surface-sidebar-hover: rgba(255, 255, 255, 0.08);
+  --surface-sidebar-active: rgba(255, 255, 255, 0.14);
+
+  /* Text */
+  --text-primary: #1A1A2E;
+  --text-secondary: rgba(26, 26, 46, 0.55);
+  --text-muted: rgba(26, 26, 46, 0.35);
+  --text-on-dark: #F0EDE8;
+  --text-on-dark-muted: rgba(240, 237, 232, 0.45);
+
+  /* Borders */
+  --border-default: rgba(26, 26, 46, 0.08);
+  --border-hover: rgba(26, 26, 46, 0.15);
+
+  /* Accents */
+  --accent-primary: #6C5CE7;
+  --accent-success: #00B894;
+  --accent-warning: #FDCB6E;
+  --accent-danger: #E17055;
+  --accent-info: #74B9FF;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(26, 26, 46, 0.04);
+  --shadow-md: 0 4px 16px rgba(26, 26, 46, 0.06);
+  --shadow-lg: 0 8px 32px rgba(26, 26, 46, 0.08);
+  --shadow-sidebar: 4px 0 24px rgba(26, 26, 46, 0.12);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+/* ── Apple-like micro-interactions ────────────────────────────────── */
+button,
+[role="button"] {
+  transition: transform 120ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease,
+    opacity 200ms ease;
+}
+
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Smooth card hover lift */
+.card-hover {
+  transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 200ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Drag ghost state */
+[draggable="true"] {
+  cursor: grab;
+}
+
+[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 46, 0.12);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 46, 0.25);
+}
+
+/* Selection highlight */
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Smooth focus rings */
+*:focus-visible {
+  outline: 2px solid rgba(108, 92, 231, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Glass surface utility */
+.glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(40px) saturate(1.5);
+  -webkit-backdrop-filter: blur(40px) saturate(1.5);
+}
+
+/* Sidebar item styles */
+.sidebar-item {
+  position: relative;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.sidebar-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: transparent;
+  transition: background 150ms ease;
+}
+
+.sidebar-item.active::before {
+  background: var(--accent-primary);
+}
