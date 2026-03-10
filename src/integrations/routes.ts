@@ -136,3 +136,29 @@ integrationRouter.get('/integration-events', (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+// ── POST /api/integrations/acculynx/sync ──
+// Direct execution of AccuLynx sync using provided key
+import { syncAccuLynxData } from '../services/acculynxImporter.ts';
+
+integrationRouter.post('/integrations/acculynx/sync', async (req, res) => {
+    try {
+        const apiKey = process.env.ACCULYNX_API_KEY;
+        if (!apiKey) {
+            return res.status(400).json({ error: 'AccuLynx API Key is not configured in .env' });
+        }
+
+        const result = await syncAccuLynxData(apiKey);
+
+        // Log sync event
+        db.prepare(`
+            INSERT INTO integration_events 
+            (integrationId, eventType, direction, payload, status)
+            VALUES ('acculynx', 'sync.manual', 'inbound', ?, 'success')
+        `).run(JSON.stringify(result));
+
+        res.json({ success: true, result });
+    } catch (err: any) {
+        res.status(500).json({ error: err.message });
+    }
+});

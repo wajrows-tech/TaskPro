@@ -15,6 +15,7 @@ declare module 'express-serve-static-core' {
  * Validates the Bearer token and attaches the authenticated user to the request.
  */
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+    console.log(`[AUTH CHECK] ${req.method} ${req.originalUrl}`);
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         // We will return 401 instead of throwing to be handled naturally by express next()

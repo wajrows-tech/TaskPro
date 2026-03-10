@@ -5,10 +5,8 @@ import { AppError } from '../../utils/errors.ts';
 
 export const syncRouter = Router();
 
-// Ensure all sync routes are authenticated
-syncRouter.use(requireAuth);
-
-syncRouter.post('/sync/enqueue', (req: any, res) => {
+// Apply auth middleware individually to prevent leaking
+syncRouter.post('/sync/enqueue', requireAuth, (req: any, res) => {
     try {
         const { entityType, action, payload, entityId, localId } = req.body;
 
@@ -23,7 +21,7 @@ syncRouter.post('/sync/enqueue', (req: any, res) => {
     }
 });
 
-syncRouter.get('/sync/pending', (req: any, res) => {
+syncRouter.get('/sync/pending', requireAuth, (req: any, res) => {
     try {
         const items = SyncService.getPendingItems(req.user.id);
         res.json({ items });
@@ -32,7 +30,7 @@ syncRouter.get('/sync/pending', (req: any, res) => {
     }
 });
 
-syncRouter.post('/sync/flush', (req: any, res) => {
+syncRouter.post('/sync/flush', requireAuth, (req: any, res) => {
     try {
         const items = SyncService.getPendingItems(req.user.id);
         const results = [];
