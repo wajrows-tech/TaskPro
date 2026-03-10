@@ -27,6 +27,26 @@ export class DocumentService {
         }
         return true;
     }
+
+    // ── Phase 13: Remote Media Integration ──
+    static getMediaMetadataByJobId(jobId: number) {
+        return db.prepare('SELECT * FROM media_metadata WHERE jobId = ? ORDER BY createdAt DESC').all(jobId);
+    }
+
+    static queueMediaFetch(mediaId: number) {
+        const metadata: any = db.prepare('SELECT * FROM media_metadata WHERE id = ?').get(mediaId);
+        if (!metadata) {
+            throw new NotFoundError(`Media metadata with ID ${mediaId} not found`);
+        }
+
+        db.prepare(`
+            INSERT INTO media_queue (jobId, sourceExternalId, url, fileName, status)
+            VALUES (?, ?, ?, ?, 'queued')
+            ON CONFLICT(sourceExternalId) DO UPDATE SET status = 'queued'
+        `).run(metadata.jobId, metadata.sourceExternalId, metadata.url, metadata.fileName);
+
+        return { success: true, message: 'Added to download queue' };
+    }
 }
- 
- 
+
+

@@ -81,6 +81,12 @@ export interface Job {
   projectManagerId?: number;
   crewName?: string;
 
+  // ── Phase 12 Enrichments ──
+  rawPayload?: string;
+  financialSummary?: string;
+  sourceSystem?: string;
+  sourceEntityType?: string;
+
   // Linked entities (populated by API)
   contacts?: JobContact[];
   tasks?: Task[];
@@ -446,5 +452,5 @@ export const CONTACT_ROLES: { key: ContactRole; label: string; color: string }[]
   { key: 'project_manager', label: 'Project Manager', color: '#00CEC9' },
   { key: 'other', label: 'Other', color: '#636E72' },
 ];
- 
- 
+
+

@@ -31,7 +31,7 @@ async function testPhase11() {
     db.exec('DELETE FROM integration_sync_state');
 
     try {
-        const metrics = await syncAccuLynxData();
+        const metrics = await syncAccuLynxData('dummy_key');
         console.log('[Test 11] Sync Completed.', metrics);
 
         console.log('\n[Test 11] Verifying Data Model...');

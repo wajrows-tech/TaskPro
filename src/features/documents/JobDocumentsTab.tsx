@@ -15,14 +15,20 @@ interface JobDocumentsTabProps {
 export function JobDocumentsTab({ jobId }: JobDocumentsTabProps) {
     const { addToast } = useUI();
     const [documents, setDocuments] = useState<Document[]>([]);
+    const [remoteMedia, setRemoteMedia] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
+    const [fetchingMediaId, setFetchingMediaId] = useState<number | null>(null);
 
     const loadDocuments = async () => {
         try {
             setLoading(true);
-            const docs = await api.getJobDocuments(jobId);
+            const [docs, media] = await Promise.all([
+                api.getJobDocuments(jobId),
+                api.getMediaMetadata(jobId).catch(() => [])
+            ]);
             setDocuments(docs);
+            setRemoteMedia(media);
         } catch (err: any) {
             console.error('Failed to load documents', err);
         } finally {
@@ -61,6 +67,18 @@ export function JobDocumentsTab({ jobId }: JobDocumentsTabProps) {
             await loadDocuments();
         } catch (err) {
             addToast('Failed to delete document', 'error');
+        }
+    };
+
+    const handleFetchRemote = async (mediaId: number) => {
+        try {
+            setFetchingMediaId(mediaId);
+            await api.queueMediaFetch(mediaId);
+            addToast('Added to download queue', 'success');
+        } catch (err) {
+            addToast('Failed to queue fetch', 'error');
+        } finally {
+            setFetchingMediaId(null);
         }
     };
 
@@ -151,8 +169,45 @@ export function JobDocumentsTab({ jobId }: JobDocumentsTabProps) {
                     ))}
                 </div>
             )}
+
+            {/* Additive Phase 13: Remote Media Integration */}
+            {remoteMedia.length > 0 && (
+                <div className="mt-8">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-white font-semibold">Remote AccuLynx Attachments</h3>
+                        <Badge color="#00B894" size="sm" className="px-2">Remote Source ({remoteMedia.length})</Badge>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {remoteMedia.map(media => (
+                            <Card key={media.id} padding="sm" className="flex items-center gap-4 hover:border-emerald-500/20 transition-colors group">
+                                <div className="p-3 bg-emerald-500/10 rounded-lg">
+                                    {getFileIcon(media.mimeType || '')}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-white truncate" title={media.fileName}>{media.fileName}</p>
+                                    <div className="flex items-center gap-2 mt-1">
+                                        <span className="text-[10px] text-gray-500">{formatBytes(media.fileSize || 0)}</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-1 md:opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <Button
+                                        size="sm"
+                                        variant="secondary"
+                                        className="h-7 text-xs px-2"
+                                        onClick={() => handleFetchRemote(media.id)}
+                                        disabled={fetchingMediaId === media.id}
+                                    >
+                                        {fetchingMediaId === media.id ? 'Queuing...' : 'Fetch'}
+                                    </Button>
+                                </div>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
- 
- 
+
+

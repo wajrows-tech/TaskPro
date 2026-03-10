@@ -14,7 +14,9 @@ export const createDocument = async (jobId: number, file: File): Promise<Documen
     if (!res.ok) throw new Error('Failed to upload document');
     return res.json();
 };
-
 export const deleteDocument = (id: number) => request<{ success: boolean }>(`/documents/${id}`, { method: 'DELETE' });
- 
- 
+
+export const getMediaMetadata = (jobId: number) => request<any[]>(`/jobs/${jobId}/media-metadata`);
+export const queueMediaFetch = (mediaId: number) => request<{ success: boolean, message: string }>(`/media-metadata/${mediaId}/fetch`, { method: 'POST' });
+
+

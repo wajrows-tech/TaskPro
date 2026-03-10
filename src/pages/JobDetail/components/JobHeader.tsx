@@ -26,6 +26,9 @@ export function JobHeader({ job, onBack, onEdit, onDelete }: JobHeaderProps) {
                     <div className="flex items-center gap-3 mb-1">
                         <h1 className="text-3xl font-bold text-white tracking-tight">{job.name}</h1>
                         <Badge color={stage?.color} size="md" className="px-3 py-1 font-semibold text-sm">{stage?.label}</Badge>
+                        {job.sourceSystem === 'acculynx' && (
+                            <Badge color="#00B894" size="md" className="px-3 py-1 font-semibold text-sm border-emerald-500/30">AccuLynx Linked</Badge>
+                        )}
                     </div>
                     <div className="flex items-center gap-4 text-sm text-gray-500 font-medium">
                         <span className="text-gray-400">{job.jobNumber}</span>
@@ -41,5 +44,5 @@ export function JobHeader({ job, onBack, onEdit, onDelete }: JobHeaderProps) {
         </div>
     );
 }
- 
- 
+
+
