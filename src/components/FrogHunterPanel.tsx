@@ -152,3 +152,4 @@ export function FrogHunterPanel({ frogs, hunted, hallOfFame, latestHunt, zenScor
     );
 }
  
+ 

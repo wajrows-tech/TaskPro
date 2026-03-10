@@ -132,3 +132,4 @@ export abstract class BaseAgent {
     abstract getStatus(): { summary: string; health: 'idle' | 'active' | 'error'; lastAction?: string };
 }
  
+ 

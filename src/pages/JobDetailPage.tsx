@@ -107,3 +107,4 @@ export function JobDetailPage({ jobId }: JobDetailPageProps) {
     );
 }
  
+ 

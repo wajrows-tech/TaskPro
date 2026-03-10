@@ -203,3 +203,4 @@ class IntegrationRegistry {
 
 export const registry = new IntegrationRegistry();
  
+ 

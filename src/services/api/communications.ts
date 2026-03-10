@@ -7,3 +7,4 @@ export const updateCommunication = (id: number, data: Partial<Communication>) =>
 export const deleteCommunication = (id: number) => request<{ success: boolean }>(`/communications/${id}`, { method: 'DELETE' });
 export const getJobCommunications = (jobId: number) => request<Communication[]>('/communications').then(comms => comms.filter(c => c.jobId === jobId));
  
+ 

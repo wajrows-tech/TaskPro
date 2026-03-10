@@ -1,0 +1,67 @@
+{
+  "id": "cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5",
+  "contacts": [
+    {
+      "id": "57d4226a-e574-4edf-b304-f542ea72c719",
+      "contact": {
+        "id": "f995c50c-b3e2-ea11-9142-ac1f6b0fcb13",
+        "_link": "https://api.acculynx.com/api/v2/contacts/f995c50c-b3e2-ea11-9142-ac1f6b0fcb13"
+      },
+      "isPrimary": true,
+      "relationToPrimary": "",
+      "_link": "https://api.acculynx.com/api/v2/jobs/cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5/contacts/57d4226a-e574-4edf-b304-f542ea72c719"
+    }
+  ],
+  "locationAddress": {
+    "street1": "2755 Delta Place",
+    "city": "Colorado Springs",
+    "state": {
+      "id": 6,
+      "name": "Colorado",
+      "abbreviation": "CO",
+      "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+    },
+    "zipCode": "80910",
+    "country": {
+      "id": 1,
+      "name": "United States",
+      "abbreviation": "US",
+      "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+    }
+  },
+  "geoLocation": {
+    "latitude": 38.7926367,
+    "longitude": -104.7729692
+  },
+  "tradeTypes": [
+    {
+      "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+      "name": "Roofing"
+    }
+  ],
+  "jobCategory": {
+    "id": 2,
+    "categoryId": 2,
+    "name": "Commercial"
+  },
+  "workType": {
+    "id": 1,
+    "name": "Insurance",
+    "systemDefault": false,
+    "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/1"
+  },
+  "leadSource": {
+    "id": "1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+    "name": "Other",
+    "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+  },
+  "leadDeadReason": "Other",
+  "currentMilestone": "Cancelled",
+  "milestoneDate": "2020-12-18T16:29:03Z",
+  "createdDate": "2020-08-20T07:01:54Z",
+  "modifiedDate": "2020-12-18T16:29:03Z",
+  "jobName": "N/A: Gene Meeks",
+  "jobNumber": "",
+  "priority": "Normal",
+  "_link": "https://api.acculynx.com/api/v2/jobs/cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5"
+}

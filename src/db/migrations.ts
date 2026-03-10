@@ -733,6 +733,193 @@ const migrations: { version: number; description: string; run: () => void }[] = 
             `);
             console.log('[migration 16] ✅ Mobile Sync Queue schema applied');
         }
+    },
+    {
+        version: 17,
+        description: 'Hardening AccuLynx Sync: Adding Stable External IDs',
+        run: () => {
+            console.log('[migration 17] Adding AccuLynx foreign key columns...');
+
+            if (!tableHasColumn('jobs', 'acculynxId')) {
+                db.exec('ALTER TABLE jobs ADD COLUMN acculynxId TEXT');
+                db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_jobs_acculynxId ON jobs(acculynxId)');
+            }
+            if (!tableHasColumn('contacts', 'acculynxId')) {
+                db.exec('ALTER TABLE contacts ADD COLUMN acculynxId TEXT');
+                db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_contacts_acculynxId ON contacts(acculynxId)');
+            }
+            if (!tableHasColumn('communications', 'sourceExternalId')) {
+                db.exec('ALTER TABLE communications ADD COLUMN sourceExternalId TEXT');
+                db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_comms_sourceExtId ON communications(sourceExternalId)');
+            }
+            if (!tableHasColumn('communications', 'mediaMetadata')) {
+                db.exec('ALTER TABLE communications ADD COLUMN mediaMetadata TEXT DEFAULT "{}"');
+            }
+
+            console.log('[migration 17] ✅ AccuLynx integration stable IDs applied');
+        }
+    },
+    {
+        version: 18,
+        description: 'Phase 9: Checkpointing & Deduplicated Media Queue',
+        run: () => {
+            console.log('[migration 18] Creating media_queue table...');
+            db.exec(`
+                CREATE TABLE IF NOT EXISTS media_queue (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    jobId INTEGER REFERENCES jobs(id) ON DELETE SET NULL,
+                    sourceExternalId TEXT NOT NULL UNIQUE,
+                    url TEXT NOT NULL,
+                    fileName TEXT,
+                    status TEXT DEFAULT 'pending', -- pending, downloading, completed, failed
+                    attempts INTEGER DEFAULT 0,
+                    localFilePath TEXT,
+                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+                
+                CREATE INDEX IF NOT EXISTS idx_media_queue_status ON media_queue(status);
+                CREATE INDEX IF NOT EXISTS idx_media_queue_jobId ON media_queue(jobId);
+             `);
+            console.log('[migration 18] ✅ Media Queue schema applied');
+        }
+    },
+    {
+        version: 19,
+        description: 'Phase 11: AccuLynx Storage Model Redesign & ClaimSync Courier Schema',
+        run: () => {
+            console.log('[migration 19] Adding rawPayload storage columns and creating new integration tables...');
+
+            if (!tableHasColumn('jobs', 'rawPayload')) {
+                db.exec('ALTER TABLE jobs ADD COLUMN rawPayload TEXT DEFAULT "{}"');
+            }
+            if (!tableHasColumn('jobs', 'financialSummary')) {
+                db.exec('ALTER TABLE jobs ADD COLUMN financialSummary TEXT DEFAULT "{}"');
+            }
+            if (!tableHasColumn('contacts', 'rawPayload')) {
+                db.exec('ALTER TABLE contacts ADD COLUMN rawPayload TEXT DEFAULT "{}"');
+            }
+
+            db.exec(`
+                CREATE TABLE IF NOT EXISTS claimsync_outbox (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    jobId INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+                    packageType TEXT NOT NULL,
+                    payload TEXT NOT NULL,
+                    status TEXT DEFAULT 'staged',
+                    approvedBy INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                    externalReferenceId TEXT,
+                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+                CREATE INDEX IF NOT EXISTS idx_claimsync_outbox_job ON claimsync_outbox(jobId);
+                CREATE INDEX IF NOT EXISTS idx_claimsync_outbox_status ON claimsync_outbox(status);
+
+                CREATE TABLE IF NOT EXISTS integration_endpoints (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    provider TEXT NOT NULL,
+                    category TEXT NOT NULL,
+                    method TEXT NOT NULL,
+                    pathTemplate TEXT NOT NULL,
+                    queryShape TEXT DEFAULT '{}',
+                    isReadWrite TEXT DEFAULT 'read',
+                    riskLevel INTEGER DEFAULT 1,
+                    authMode TEXT DEFAULT 'session',
+                    payloadSchema TEXT DEFAULT '{}',
+                    responseSchema TEXT DEFAULT '{}',
+                    notes TEXT DEFAULT '',
+                    isEnabled INTEGER DEFAULT 1
+                );
+            `);
+            console.log('[migration 19] ✅ AccuLynx Storage Model Redesign complete');
+        }
+    },
+    {
+        version: 20,
+        description: 'Phase 12: Universal tracking, media separation, typed courier, and action registry',
+        run: () => {
+            console.log('[migration 20] Normalizing source tracking fields across entities...');
+
+            const sourceCols = [
+                { name: 'sourceSystem', type: 'TEXT DEFAULT "local"' },
+                { name: 'sourceEntityType', type: 'TEXT' },
+                { name: 'sourceModifiedAt', type: 'DATETIME' },
+                { name: 'sourceHash', type: 'TEXT' }
+            ];
+
+            const entities = ['jobs', 'contacts', 'communications', 'tasks'];
+            for (const table of entities) {
+                for (const col of sourceCols) {
+                    if (!tableHasColumn(table, col.name)) {
+                        db.exec(`ALTER TABLE ${table} ADD COLUMN ${col.name} ${col.type}`);
+                    }
+                }
+                // Ensure rawPayload exists on tables that missed V19
+                if (table === 'communications' || table === 'tasks') {
+                    if (!tableHasColumn(table, 'rawPayload')) {
+                        db.exec(`ALTER TABLE ${table} ADD COLUMN rawPayload TEXT DEFAULT "{}"`);
+                    }
+                }
+            }
+
+            console.log('[migration 20] Decoupling media metadata from queue...');
+            db.exec(`
+                CREATE TABLE IF NOT EXISTS media_metadata (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    jobId INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+                    sourceExternalId TEXT NOT NULL UNIQUE,
+                    url TEXT NOT NULL,
+                    fileName TEXT,
+                    fileSize INTEGER,
+                    mimeType TEXT,
+                    rawPayload TEXT DEFAULT '{}',
+                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+                CREATE INDEX IF NOT EXISTS idx_media_meta_jobId ON media_metadata(jobId);
+                CREATE INDEX IF NOT EXISTS idx_media_meta_url ON media_metadata(url);
+            `);
+
+            console.log('[migration 20] Expanding claimsync_outbox to Typed Courier model...');
+            db.exec(`DROP TABLE IF EXISTS claimsync_outbox`); // Safe, it was just created empty in V19
+            db.exec(`
+                CREATE TABLE claimsync_outbox (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    jobId INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+                    packageType TEXT NOT NULL,
+                    packageVersion INTEGER DEFAULT 1,
+                    payload TEXT NOT NULL,
+                    courierStatus TEXT DEFAULT 'staged',
+                    retryCount INTEGER DEFAULT 0,
+                    errorMessage TEXT,
+                    approvedBy INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                    approvedAt DATETIME,
+                    deliveredAt DATETIME,
+                    externalReferenceId TEXT,
+                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+                CREATE INDEX idx_claimsync_outbox_job ON claimsync_outbox(jobId);
+                CREATE INDEX idx_claimsync_outbox_status ON claimsync_outbox(courierStatus);
+            `);
+
+            console.log('[migration 20] Creating integration_actions registry...');
+            db.exec(`
+                CREATE TABLE IF NOT EXISTS integration_actions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    actionKey TEXT NOT NULL UNIQUE,
+                    provider TEXT NOT NULL,
+                    endpointId INTEGER REFERENCES integration_endpoints(id) ON DELETE SET NULL,
+                    type TEXT NOT NULL, -- 'read', 'write', 'courier'
+                    riskLevel INTEGER DEFAULT 1,
+                    requiresApproval INTEGER DEFAULT 0,
+                    expectedPayloadSchema TEXT DEFAULT '{}',
+                    expectedResponseSchema TEXT DEFAULT '{}',
+                    isEnabled INTEGER DEFAULT 1,
+                    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+            `);
+
+            console.log('[migration 20] ✅ Phase 12 schema applied');
+        }
     }
 ];
 export function runMigrations() {
@@ -770,4 +957,5 @@ export function generateJobNumber(): string {
     const count = (db.prepare('SELECT COUNT(*) as c FROM jobs WHERE jobNumber LIKE ?').get(`JOB - ${year} -% `) as any)?.c || 0;
     return `JOB - ${year} -${String(count + 1).padStart(3, '0')} `;
 }
- 
+
+

@@ -43,3 +43,4 @@ export function buildUpdate(table: string, id: string | number, data: Record<str
     return true;
 }
  
+ 

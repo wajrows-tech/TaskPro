@@ -57,3 +57,4 @@ export { agentMemory } from './memory.ts';
 export type { ThinkingStep, AgentId, AgentRequest, AgentResponse, CRMEvent } from './protocol.ts';
 export { AGENT_MANIFESTS } from './protocol.ts';
  
+ 

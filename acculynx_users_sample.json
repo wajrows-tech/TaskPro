@@ -1,0 +1,167 @@
+{
+  "count": 32,
+  "pageSize": 10,
+  "pageStartIndex": 0,
+  "items": [
+    {
+      "id": "4469e3b6-fd00-434c-a65e-6757b00775fa",
+      "displayName": "(PA) Michael Stoycheff",
+      "firstName": "Michael",
+      "lastName": "Stoycheff",
+      "initials": "MS",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(970) 390-1727",
+      "mobilePhone": "",
+      "email": "Michael@americanclaimsllc.com",
+      "_link": "https://api.acculynx.com/api/v2/users/4469e3b6-fd00-434c-a65e-6757b00775fa"
+    },
+    {
+      "id": "8c22df81-7203-4b92-ae9e-97c755796759",
+      "displayName": "(Supplementer) Becca",
+      "firstName": "Becca",
+      "lastName": "King",
+      "initials": "BK",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(507) 829-1097",
+      "mobilePhone": "",
+      "email": "becca@kingestimating.com",
+      "_link": "https://api.acculynx.com/api/v2/users/8c22df81-7203-4b92-ae9e-97c755796759"
+    },
+    {
+      "id": "15ef96e6-3aa2-4571-b2a7-a23a54b5f6a1",
+      "displayName": "(Supplementer) Dallas Bretz",
+      "firstName": "Dallas",
+      "lastName": "Bretz",
+      "initials": "DB",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(940) 550-4684",
+      "mobilePhone": "",
+      "email": "office@capitalclaimsolutions.com",
+      "_link": "https://api.acculynx.com/api/v2/users/15ef96e6-3aa2-4571-b2a7-a23a54b5f6a1"
+    },
+    {
+      "id": "0959edb1-c520-4127-820e-b059e6f5e445",
+      "displayName": "(Supplementer) Dynamic Claims (Naomi)",
+      "firstName": "Naomi",
+      "lastName": "Buszko",
+      "initials": "DC",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(605) 519-9205",
+      "mobilePhone": "",
+      "email": "ins@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/0959edb1-c520-4127-820e-b059e6f5e445"
+    },
+    {
+      "id": "46444551-8457-4504-aa7f-3dc100d78062",
+      "displayName": "(Supplementer) Supplement Experts",
+      "firstName": "Supplement",
+      "lastName": "Experts",
+      "initials": "SE",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(720) 235-8323",
+      "mobilePhone": "7202358323",
+      "email": "claims@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/46444551-8457-4504-aa7f-3dc100d78062"
+    },
+    {
+      "id": "d0e86a36-5735-48a6-aa7b-068ad4820d48",
+      "displayName": "AR Zahir",
+      "firstName": "AR",
+      "lastName": "Zahir",
+      "initials": "AZ",
+      "role": {
+        "id": 5,
+        "name": "Sales"
+      },
+      "status": "Active",
+      "phone": "(720) 804-5721",
+      "mobilePhone": "7208045721",
+      "email": "Ar@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/d0e86a36-5735-48a6-aa7b-068ad4820d48"
+    },
+    {
+      "id": "8859002a-cf0c-4571-a4bf-7541f1f1e456",
+      "displayName": "Bookkeeping (Yvette)",
+      "firstName": "Bookkeeping",
+      "lastName": "CRC",
+      "initials": "BK",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(208) 625-0668",
+      "mobilePhone": "",
+      "email": "bookkeeping@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/8859002a-cf0c-4571-a4bf-7541f1f1e456"
+    },
+    {
+      "id": "780e7b75-b7d1-4503-bea7-445d7d994177",
+      "displayName": "Bradley Mumm",
+      "firstName": "Bradley",
+      "lastName": "Mumm",
+      "initials": "bm",
+      "role": {
+        "id": 5,
+        "name": "Sales"
+      },
+      "status": "Active",
+      "phone": "(831) 325-6424",
+      "mobilePhone": "",
+      "email": "bmumm@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/780e7b75-b7d1-4503-bea7-445d7d994177"
+    },
+    {
+      "id": "5fd89e59-3372-42d3-b285-d8d80bbf904e",
+      "displayName": "Christopher Sanchez",
+      "firstName": "Christopher",
+      "lastName": "Sanchez",
+      "initials": "CS",
+      "role": {
+        "id": 1,
+        "name": "CompanyAdmin"
+      },
+      "status": "Active",
+      "phone": "(720) 301-6472",
+      "mobilePhone": "7203016472",
+      "email": "csanchez@crcinbox.com",
+      "_link": "https://api.acculynx.com/api/v2/users/5fd89e59-3372-42d3-b285-d8d80bbf904e"
+    },
+    {
+      "id": "23ff9b9e-4420-4a48-8576-05da5c502f37",
+      "displayName": "CRTFD Home Services",
+      "firstName": "CRTFD",
+      "lastName": "Home Services",
+      "initials": "CH",
+      "role": {
+        "id": 4,
+        "name": "Office"
+      },
+      "status": "Active",
+      "phone": "(877) 552-7833",
+      "mobilePhone": "9703000809",
+      "email": "support@crtfdhome.services",
+      "_link": "https://api.acculynx.com/api/v2/users/23ff9b9e-4420-4a48-8576-05da5c502f37"
+    }
+  ]
+}

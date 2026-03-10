@@ -122,3 +122,4 @@ export function CheckInModal({ type, onClose, onSubmit }: CheckInModalProps) {
     );
 }
  
+ 

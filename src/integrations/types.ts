@@ -185,3 +185,4 @@ export interface IntegrationModule {
     handleCrmEvent?(event: import('../agents/protocol.ts').CRMEvent, credentials: IntegrationCredentials): Promise<void>;
 }
  
+ 
