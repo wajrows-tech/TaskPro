@@ -122,3 +122,4 @@ portalRouter.get('/jobs/:jobId/documents', requirePortalAuth, (req: any, res) =>
     }
 });
  
+ 

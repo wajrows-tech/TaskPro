@@ -1,0 +1,343 @@
+{
+  "count": 5633,
+  "pageSize": 5,
+  "pageStartIndex": 0,
+  "items": [
+    {
+      "id": "cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5",
+      "contacts": [
+        {
+          "id": "57d4226a-e574-4edf-b304-f542ea72c719",
+          "contact": {
+            "id": "f995c50c-b3e2-ea11-9142-ac1f6b0fcb13",
+            "_link": "https://api.acculynx.com/api/v2/contacts/f995c50c-b3e2-ea11-9142-ac1f6b0fcb13"
+          },
+          "isPrimary": true,
+          "relationToPrimary": "",
+          "_link": "https://api.acculynx.com/api/v2/jobs/cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5/contacts/57d4226a-e574-4edf-b304-f542ea72c719"
+        }
+      ],
+      "locationAddress": {
+        "street1": "2755 Delta Place",
+        "city": "Colorado Springs",
+        "state": {
+          "id": 6,
+          "name": "Colorado",
+          "abbreviation": "CO",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+        },
+        "zipCode": "80910",
+        "country": {
+          "id": 1,
+          "name": "United States",
+          "abbreviation": "US",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+        }
+      },
+      "geoLocation": {
+        "latitude": 38.7926367,
+        "longitude": -104.7729692
+      },
+      "tradeTypes": [
+        {
+          "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+          "name": "Roofing"
+        }
+      ],
+      "jobCategory": {
+        "id": 2,
+        "categoryId": 2,
+        "name": "Commercial"
+      },
+      "workType": {
+        "id": 1,
+        "name": "Insurance",
+        "systemDefault": false,
+        "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/1"
+      },
+      "leadSource": {
+        "id": "1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+        "name": "Other",
+        "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+      },
+      "leadDeadReason": "Other",
+      "currentMilestone": "Cancelled",
+      "milestoneDate": "2020-12-18T16:29:03Z",
+      "createdDate": "2020-08-20T07:01:54Z",
+      "modifiedDate": "2020-12-18T16:29:03Z",
+      "jobName": "N/A: Gene Meeks",
+      "jobNumber": "",
+      "priority": "Normal",
+      "_link": "https://api.acculynx.com/api/v2/jobs/cb8e05ad-f9c4-48d1-9b27-1ba43e55c8b5"
+    },
+    {
+      "id": "671f1a05-54cc-4ad4-8ea1-122a8e830546",
+      "contacts": [
+        {
+          "id": "371fbd9e-f6de-4466-b815-d0ec642d588b",
+          "contact": {
+            "id": "bc4cdd65-b3e2-ea11-9142-ac1f6b0fcb13",
+            "_link": "https://api.acculynx.com/api/v2/contacts/bc4cdd65-b3e2-ea11-9142-ac1f6b0fcb13"
+          },
+          "isPrimary": true,
+          "relationToPrimary": "",
+          "_link": "https://api.acculynx.com/api/v2/jobs/671f1a05-54cc-4ad4-8ea1-122a8e830546/contacts/371fbd9e-f6de-4466-b815-d0ec642d588b"
+        }
+      ],
+      "locationAddress": {
+        "street1": "137 Nickel Street",
+        "street2": "",
+        "city": "Broomfield",
+        "state": {
+          "id": 6,
+          "name": "Colorado",
+          "abbreviation": "CO",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+        },
+        "zipCode": "80020",
+        "country": {
+          "id": 1,
+          "name": "United States",
+          "abbreviation": "US",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+        }
+      },
+      "geoLocation": {
+        "latitude": 39.9189887,
+        "longitude": -105.0895816
+      },
+      "tradeTypes": [
+        {
+          "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+          "name": "Roofing"
+        }
+      ],
+      "jobCategory": {
+        "id": 2,
+        "categoryId": 2,
+        "name": "Commercial"
+      },
+      "workType": {
+        "id": 1,
+        "name": "Insurance",
+        "systemDefault": false,
+        "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/1"
+      },
+      "leadSource": {
+        "id": "1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+        "name": "Other",
+        "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/1ab79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+      },
+      "leadDeadReason": "",
+      "currentMilestone": "Closed",
+      "milestoneDate": "2021-05-06T00:21:02Z",
+      "createdDate": "2020-08-20T07:04:23Z",
+      "modifiedDate": "2022-04-07T19:24:09Z",
+      "jobName": "20-5: Jeff Kaplan",
+      "jobNumber": "20-5",
+      "priority": "Normal",
+      "_link": "https://api.acculynx.com/api/v2/jobs/671f1a05-54cc-4ad4-8ea1-122a8e830546"
+    },
+    {
+      "id": "09f97c9e-aef4-42c6-b764-d0a8c49a5ef1",
+      "contacts": [
+        {
+          "id": "2728af8f-59ea-460b-b1ed-7f64edba1b82",
+          "contact": {
+            "id": "2503a0a9-b3e2-ea11-9142-ac1f6b0fcb13",
+            "_link": "https://api.acculynx.com/api/v2/contacts/2503a0a9-b3e2-ea11-9142-ac1f6b0fcb13"
+          },
+          "isPrimary": true,
+          "relationToPrimary": "",
+          "_link": "https://api.acculynx.com/api/v2/jobs/09f97c9e-aef4-42c6-b764-d0a8c49a5ef1/contacts/2728af8f-59ea-460b-b1ed-7f64edba1b82"
+        }
+      ],
+      "locationAddress": {
+        "street1": "3970 Clearview Frontage Road",
+        "city": "Colorado Springs",
+        "state": {
+          "id": 6,
+          "name": "Colorado",
+          "abbreviation": "CO",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+        },
+        "zipCode": "80911",
+        "country": {
+          "id": 1,
+          "name": "United States",
+          "abbreviation": "US",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+        }
+      },
+      "geoLocation": {
+        "latitude": 38.7722518,
+        "longitude": -104.7399516
+      },
+      "tradeTypes": [
+        {
+          "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+          "name": "Roofing"
+        }
+      ],
+      "jobCategory": {
+        "id": 2,
+        "categoryId": 2,
+        "name": "Commercial"
+      },
+      "workType": {
+        "id": 6,
+        "name": "Inspection",
+        "systemDefault": false,
+        "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/6"
+      },
+      "leadSource": {
+        "id": "10b79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+        "name": "Jay Telemarketing",
+        "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/10b79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+      },
+      "leadDeadReason": "Other",
+      "currentMilestone": "Cancelled",
+      "milestoneDate": "2022-06-15T12:49:17Z",
+      "createdDate": "2020-08-20T07:06:16Z",
+      "modifiedDate": "2022-06-15T12:49:17Z",
+      "jobName": "N/A: Tony Korte Sunshine Studios",
+      "jobNumber": "",
+      "priority": "Normal",
+      "_link": "https://api.acculynx.com/api/v2/jobs/09f97c9e-aef4-42c6-b764-d0a8c49a5ef1"
+    },
+    {
+      "id": "ae49b1ee-067e-43fa-acfd-eb24d60e0c32",
+      "contacts": [
+        {
+          "id": "b33d8078-59cd-4ede-8e7f-e8ef698c4740",
+          "contact": {
+            "id": "635482da-c0e2-ea11-9142-ac1f6b0fcb13",
+            "_link": "https://api.acculynx.com/api/v2/contacts/635482da-c0e2-ea11-9142-ac1f6b0fcb13"
+          },
+          "isPrimary": true,
+          "relationToPrimary": "",
+          "_link": "https://api.acculynx.com/api/v2/jobs/ae49b1ee-067e-43fa-acfd-eb24d60e0c32/contacts/b33d8078-59cd-4ede-8e7f-e8ef698c4740"
+        }
+      ],
+      "locationAddress": {
+        "street1": "620 Colorado Avenue",
+        "city": "Colorado Springs",
+        "state": {
+          "id": 6,
+          "name": "Colorado",
+          "abbreviation": "CO",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+        },
+        "zipCode": "80905",
+        "country": {
+          "id": 1,
+          "name": "United States",
+          "abbreviation": "US",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+        }
+      },
+      "geoLocation": {
+        "latitude": 38.83296550000001,
+        "longitude": -104.836961
+      },
+      "tradeTypes": [
+        {
+          "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+          "name": "Roofing"
+        }
+      ],
+      "jobCategory": {
+        "id": 2,
+        "categoryId": 2,
+        "name": "Commercial"
+      },
+      "workType": {
+        "id": 1,
+        "name": "Insurance",
+        "systemDefault": false,
+        "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/1"
+      },
+      "leadSource": {
+        "id": "1db79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+        "name": "Telemarketing",
+        "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/1db79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+      },
+      "leadDeadReason": "",
+      "currentMilestone": "Cancelled",
+      "milestoneDate": "2021-06-07T18:50:38Z",
+      "createdDate": "2020-08-20T08:40:51Z",
+      "modifiedDate": "2021-06-07T18:50:38Z",
+      "jobName": "20-6: Jason Springs Inn",
+      "jobNumber": "20-6",
+      "priority": "Normal",
+      "_link": "https://api.acculynx.com/api/v2/jobs/ae49b1ee-067e-43fa-acfd-eb24d60e0c32"
+    },
+    {
+      "id": "11252e57-9baa-496d-92ba-a8584240377e",
+      "contacts": [
+        {
+          "id": "0849a2ed-7a31-46de-a0b4-57ba8a8a34f9",
+          "contact": {
+            "id": "89a491cf-c1e2-ea11-9142-ac1f6b0fcb13",
+            "_link": "https://api.acculynx.com/api/v2/contacts/89a491cf-c1e2-ea11-9142-ac1f6b0fcb13"
+          },
+          "isPrimary": true,
+          "relationToPrimary": "",
+          "_link": "https://api.acculynx.com/api/v2/jobs/11252e57-9baa-496d-92ba-a8584240377e/contacts/0849a2ed-7a31-46de-a0b4-57ba8a8a34f9"
+        }
+      ],
+      "locationAddress": {
+        "street1": "1407 South 8th Street",
+        "city": "Colorado Springs",
+        "state": {
+          "id": 6,
+          "name": "Colorado",
+          "abbreviation": "CO",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1/states/6"
+        },
+        "zipCode": "80905",
+        "country": {
+          "id": 1,
+          "name": "United States",
+          "abbreviation": "US",
+          "_link": "https://api.acculynx.com/api/v2/acculynx/countries/1"
+        }
+      },
+      "geoLocation": {
+        "latitude": 38.8135505,
+        "longitude": -104.8404912
+      },
+      "tradeTypes": [
+        {
+          "id": "863d86a5-b411-49cf-b148-cb85fccc1be0",
+          "name": "Roofing"
+        }
+      ],
+      "jobCategory": {
+        "id": 2,
+        "categoryId": 2,
+        "name": "Commercial"
+      },
+      "workType": {
+        "id": 1,
+        "name": "Insurance",
+        "systemDefault": false,
+        "_link": "https://api.acculynx.com/api/v2/company-settings/job-file-settings/work-types/1"
+      },
+      "leadSource": {
+        "id": "1db79cb0-e6dc-ea11-9142-ac1f6b0fcb13",
+        "name": "Telemarketing",
+        "_link": "https://api.acculynx.com/api/v2/company-settings/leads/lead-sources/1db79cb0-e6dc-ea11-9142-ac1f6b0fcb13"
+      },
+      "leadDeadReason": "No Answer/No Response (Ghosted)",
+      "currentMilestone": "Cancelled",
+      "milestoneDate": "2020-09-21T16:43:26Z",
+      "createdDate": "2020-08-20T08:47:42Z",
+      "modifiedDate": "2020-09-21T16:43:26Z",
+      "jobName": "N/A: Lori Skyway Creation",
+      "jobNumber": "",
+      "priority": "Normal",
+      "_link": "https://api.acculynx.com/api/v2/jobs/11252e57-9baa-496d-92ba-a8584240377e"
+    }
+  ]
+}

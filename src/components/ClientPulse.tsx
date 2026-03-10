@@ -136,3 +136,4 @@ export function ClientPulse({ jobs, tasks, onClientClick, onDraftCheckIn }: Clie
     );
 }
  
+ 

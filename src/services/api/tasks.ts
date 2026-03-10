@@ -16,3 +16,4 @@ export const getSubtasks = (taskId: number) => request<Subtask[]>(`/tasks/${task
 export const addTaskDependency = (taskId: number, dependsOnTaskId: number) => request<{ success: boolean }>(`/tasks/${taskId}/dependencies`, { method: 'POST', body: JSON.stringify({ dependsOnTaskId }) });
 export const removeTaskDependency = (taskId: number, depId: number) => request<{ success: boolean }>(`/tasks/${taskId}/dependencies/${depId}`, { method: 'DELETE' });
  
+ 

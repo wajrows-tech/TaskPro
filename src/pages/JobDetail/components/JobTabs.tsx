@@ -9,12 +9,12 @@ import { JobDocumentsTab } from '../../../features/documents/JobDocumentsTab';
 import { FinanceTab } from '../../../features/finance/FinanceTab';
 import { ProductionTab } from '../../../features/production/ProductionTab';
 import { cn } from '../../../utils.ts';
-import { type Task, type JobContact } from '../../../types.ts';
+import { type Task, type JobContact, type Job } from '../../../types.ts';
 
-export type JobTabType = 'timeline' | 'tasks' | 'messages' | 'contacts' | 'documents' | 'estimates' | 'financials' | 'production';
+export type JobTabType = 'timeline' | 'tasks' | 'messages' | 'contacts' | 'documents' | 'estimates' | 'financials' | 'production' | 'source' | 'outbox';
 
 interface JobTabsProps {
-    jobId: number;
+    job: Job;
     activeTab: JobTabType;
     onTabChange: (tab: JobTabType) => void;
     jobTasks: Task[];
@@ -26,7 +26,7 @@ interface JobTabsProps {
 }
 
 export function JobTabs({
-    jobId,
+    job,
     activeTab,
     onTabChange,
     jobTasks,
@@ -45,6 +45,8 @@ export function JobTabs({
         { key: 'estimates', label: 'Estimates', icon: <DollarSign size={14} /> },
         { key: 'financials', label: 'Financials', icon: <DollarSign size={14} /> },
         { key: 'production', label: 'Production', icon: <ClipboardList size={14} /> },
+        { key: 'source', label: 'Source Data', icon: <ClipboardList size={14} /> },
+        { key: 'outbox', label: 'Outbox', icon: <Mail size={14} /> },
     ];
 
     return (
@@ -74,8 +76,8 @@ export function JobTabs({
             </div>
 
             <div className="min-h-[300px]">
-                {activeTab === 'timeline' && <JobTimeline jobId={jobId} />}
-                {activeTab === 'messages' && <ClientMessagesTab jobId={jobId} />}
+                {activeTab === 'timeline' && <JobTimeline jobId={job.id} />}
+                {activeTab === 'messages' && <ClientMessagesTab jobId={job.id} />}
                 {activeTab === 'tasks' && (
                     <div className="flex flex-col gap-2">
                         {jobTasks.map(task => (
@@ -114,12 +116,32 @@ export function JobTabs({
                         )}
                     </div>
                 )}
-                {activeTab === 'documents' && <JobDocumentsTab jobId={jobId} />}
+                {activeTab === 'documents' && <JobDocumentsTab jobId={job.id} />}
                 {activeTab === 'estimates' && <p className="text-sm text-gray-500 py-8 text-center">Estimates appear here after creation</p>}
-                {activeTab === 'financials' && <FinanceTab jobId={jobId} />}
-                {activeTab === 'production' && <ProductionTab jobId={jobId} />}
+                {activeTab === 'financials' && <FinanceTab jobId={job.id} />}
+                {activeTab === 'production' && <ProductionTab jobId={job.id} />}
+
+                {/* Additive Phase 13 Tabs */}
+                {activeTab === 'source' && (
+                    <div className="bg-black p-4 rounded-xl border border-white/10 overflow-auto max-h-[600px] font-mono text-xs">
+                        {job.rawPayload ? (
+                            <pre className="text-emerald-400">{JSON.stringify(JSON.parse(job.rawPayload), null, 2)}</pre>
+                        ) : (
+                            <p className="text-gray-500 text-center py-8">No source payload available for this Job.</p>
+                        )}
+                    </div>
+                )}
+
+                {activeTab === 'outbox' && (
+                    <div className="flex flex-col gap-4 py-8 items-center justify-center border border-dashed border-white/10 rounded-xl">
+                        <Mail size={32} className="text-white/20 mb-2" />
+                        <p className="text-sm text-gray-400">ClaimSync Courier staging queue will appear here.</p>
+                        <Button size="sm" variant="secondary" disabled>Approve Staged Packages</Button>
+                    </div>
+                )}
             </div>
         </div>
     );
 }
- 
+
+

@@ -61,4 +61,24 @@ documentRouter.delete('/documents/:id', (req, res, next) => {
         next(e);
     }
 });
- 
+
+// ── Phase 13: Remote Media Endpoints ──
+documentRouter.get('/jobs/:id/media-metadata', (req, res, next) => {
+    try {
+        const metadata = DocumentService.getMediaMetadataByJobId(Number(req.params.id));
+        res.json(metadata);
+    } catch (e) {
+        next(e);
+    }
+});
+
+documentRouter.post('/media-metadata/:id/fetch', (req, res, next) => {
+    try {
+        const result = DocumentService.queueMediaFetch(Number(req.params.id));
+        res.json(result);
+    } catch (e) {
+        next(e);
+    }
+});
+
+

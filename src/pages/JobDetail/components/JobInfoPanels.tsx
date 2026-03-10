@@ -9,6 +9,13 @@ interface JobInfoPanelsProps {
 }
 
 export function JobInfoPanels({ job }: JobInfoPanelsProps) {
+    let acculynxAr: any = null;
+    if (job.financialSummary) {
+        try {
+            acculynxAr = JSON.parse(job.financialSummary);
+        } catch (e) { }
+    }
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Financials & Dates */}
@@ -49,6 +56,21 @@ export function JobInfoPanels({ job }: JobInfoPanelsProps) {
                     <InfoCard label="Lockbox" value={job.lockboxCode || '—'} />
                 </div>
             </Card>
+
+            {/* AccuLynx A/R (Additive Phase 13) */}
+            {acculynxAr && (
+                <Card className="border-emerald-500/20" padding="none">
+                    <div className="px-4 py-3 border-b border-white/5 bg-emerald-500/10">
+                        <h3 className="text-sm font-semibold text-emerald-400 flex items-center gap-2"><DollarSign size={16} /> AccuLynx A/R</h3>
+                    </div>
+                    <div className="p-4 grid grid-cols-2 gap-4">
+                        <InfoCard label="Total Invoiced" value={acculynxAr.TotalInvoiced !== undefined ? formatCurrency(acculynxAr.TotalInvoiced) : '—'} />
+                        <InfoCard label="1-30 Days" value={acculynxAr.CurrentAmount !== undefined ? formatCurrency(acculynxAr.CurrentAmount) : '—'} />
+                        <InfoCard label="31-60 Days" value={acculynxAr.OverThirtyDays !== undefined ? formatCurrency(acculynxAr.OverThirtyDays) : '—'} />
+                        <InfoCard label="60+ Days" value={acculynxAr.OverSixtyDays !== undefined ? formatCurrency(acculynxAr.OverSixtyDays) : '—'} className="text-amber-400" />
+                    </div>
+                </Card>
+            )}
         </div>
     );
 }
@@ -61,4 +83,5 @@ function InfoCard({ label, value, className }: { label: string; value: string; c
         </div>
     );
 }
- 
+
+

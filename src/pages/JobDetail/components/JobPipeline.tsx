@@ -57,3 +57,4 @@ export function JobPipeline({ job, onStageChange }: JobPipelineProps) {
     );
 }
  
+ 

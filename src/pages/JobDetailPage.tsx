@@ -81,7 +81,7 @@ export function JobDetailPage({ jobId }: JobDetailPageProps) {
             <JobInfoPanels job={job} />
 
             <JobTabs
-                jobId={jobId}
+                job={job}
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
                 jobTasks={jobTasks}
@@ -106,4 +106,5 @@ export function JobDetailPage({ jobId }: JobDetailPageProps) {
         </div>
     );
 }
- 
+
+

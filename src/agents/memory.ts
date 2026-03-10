@@ -155,3 +155,4 @@ function parseRow(row: any): MemoryEntry {
     return { ...row, value };
 }
  
+ 

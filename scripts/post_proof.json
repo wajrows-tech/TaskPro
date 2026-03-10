@@ -1,0 +1,7 @@
+{
+  "url": "https://my.acculynx.com/api/jobs/35286d41-4c2f-46c3-bd0f-6b6d38de2aed/Messages",
+  "method": "POST",
+  "csrfHeaders": {},
+  "body": "{\"RoleId\":\"1111111\",\"MessageType\":\"General Comment\",\"emailRecipients\":[],\"attachments\":[],\"index\":-1,\"Message\":\"marking this job as dead\",\"JobId\":\"35286d41-4c2f-46c3-bd0f-6b6d38de2aed\",\"uploadedAttachments\":[]}",
+  "contentType": "application/json;charset=UTF-8"
+}

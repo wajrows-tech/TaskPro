@@ -154,3 +154,4 @@ export function FinanceTab({ jobId }: FinanceTabProps) {
     );
 }
  
+ 

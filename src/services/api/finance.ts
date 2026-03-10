@@ -6,3 +6,4 @@ export const createEstimate = (jobId: number, data: Partial<Estimate>) => reques
 export const updateEstimate = (id: number, data: Partial<Estimate>) => request<Estimate>(`/estimates/${id}`, { method: 'PUT', body: JSON.stringify(data) });
 export const deleteEstimate = (id: number) => request<{ success: boolean }>(`/estimates/${id}`, { method: 'DELETE' });
  
+ 

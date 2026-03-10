@@ -70,3 +70,4 @@ if (violationCount > 0) {
     console.log(`\n✅ [Identity Guard PASSED] No forbidden platform strings found.`);
     process.exit(0);
 }
+ 

@@ -7,3 +7,4 @@ export const createContact = (data: Partial<Contact>) => request<Contact>('/cont
 export const updateContact = (id: number, data: Partial<Contact>) => request<Contact>(`/contacts/${id}`, { method: 'PUT', body: JSON.stringify(data) });
 export const deleteContact = (id: number) => request<{ success: boolean }>(`/contacts/${id}`, { method: 'DELETE' });
  
+ 

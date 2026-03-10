@@ -22,6 +22,10 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "find_joe.ts",
+    "find_more.ts"
+  ]
 }
  

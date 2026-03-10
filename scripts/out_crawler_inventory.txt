@@ -1,0 +1,184 @@
+=== ENDPOINT INVENTORY DISCOVERY REPORT ===
+
+1. Final Counts
+- Raw captured requests total: 1202
+- Unique method + full URL count: 304
+- Unique normalized endpoints (all): 159
+- Unique normalized endpoints EXCLUDING obvious noise/polling: 151
+
+2. Category Totals
+- jobs list/filter          : 9 unique endpoints
+- job detail                : 33 unique endpoints
+- users/assignment          : 13 unique endpoints
+- contacts                  : 15 unique endpoints
+- financials                : 19 unique endpoints
+- documents/files/photos    : 10 unique endpoints
+- notes/activity            : 4 unique endpoints
+- webhook/config            : 1 unique endpoints
+- noise/polling (excluded)  : 8 unique endpoints
+- other (business)          : 47 unique endpoints
+
+3. High-Value Business Endpoints Only (151 total)
+| Category | Method | Normalized Path | Query Params | Count | Example URL |
+|----------|--------|-----------------|--------------|-------|-------------|
+| jobs list/filter | GET | /api/joblist | filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 2 | /api/joblist?filters=currentMilestoneList%3DAssigned&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 2 | /api/joblist?loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | filters&filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 1 | /api/joblist?filters=currentMilestoneList%3DProspect&filters=currentMilestoneList%3DApproved&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | filters&filters&filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 1 | /api/joblist?filters=currentMilestoneList%3DProspect&filters=currentMilestoneList%3DApproved&filters=currentMilestoneList%3DCompleted&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | filters&filters&filters&filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 1 | /api/joblist?filters=currentMilestoneList%3DProspect&filters=currentMilestoneList%3DApproved&filters=currentMilestoneList%3DCompleted&filters=currentMilestoneList%3DInvoiced&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | filters&filters&filters&filters&filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 1 | /api/joblist?filters=currentMilestoneList%3DProspect&filters=currentMilestoneList%3DApproved&filters=currentMilestoneList%3DCompleted&filters=currentMilestoneList%3DInvoiced&filters=currentMilestoneList%3DClosed&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/joblist | filters&filters&filters&filters&filters&filters&loadAll&onlyBalanceDue&onlyWatchList&page&query&sort&type | 1 | /api/joblist?filters=currentMilestoneList%3DProspect&filters=currentMilestoneList%3DApproved&filters=currentMilestoneList%3DCompleted&filters=currentMilestoneList%3DInvoiced&filters=currentMilestoneList%3DClosed&filters=salesPerson%3DJoe%2520Wajrowski&loadAll=false&onlyBalanceDue=false&onlyWatchList=false&page=1&query=&sort=milestoneStart%7Cdesc&type=2 |
+| jobs list/filter | GET | /api/Search/GetTypeAheadSearch | noContacts&query | 1 | /api/Search/GetTypeAheadSearch?noContacts=false&query=hambri |
+| jobs list/filter | POST | /api/v4/appointments/search | (none) | 1 | /api/v4/appointments/search |
+| job detail | GET | /api/jobwatchlist/getcount | (none) | 3 | /api/jobwatchlist/getcount |
+| job detail | GET | /api/Company/Job_NextSteps | (none) | 2 | /api/Company/Job_NextSteps |
+| job detail | GET | /api/jobwatchlist/GetCount | (none) | 2 | /api/jobwatchlist/GetCount |
+| job detail | GET | /api/v3/job-search-views | type | 2 | /api/v3/job-search-views?type=1 |
+| job detail | GET | /api/jobs/{uuid}/GetBalanceDueAndARAge | (none) | 13 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/GetBalanceDueAndARAge |
+| job detail | GET | /api/jobwatchlist/{uuid}/GetJobOnWatchList | (none) | 2 | /api/jobwatchlist/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobOnWatchList |
+| job detail | GET | /api/jobOverview/{uuid}/GetInsuranceEnabled | (none) | 2 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetInsuranceEnabled |
+| job detail | GET | /api/jobs/{uuid}/GetQBResyncSettings | (none) | 2 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/GetQBResyncSettings |
+| job detail | GET | /api/jobOverview/{uuid}/GetNextSteps | (none) | 2 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetNextSteps |
+| job detail | GET | /api/jobOverview/{uuid}/GetLastUpdatedDate | (none) | 3 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetLastUpdatedDate |
+| job detail | GET | /api/jobOverview/{uuid}/GetLocationInformationWithInsurance | (none) | 3 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetLocationInformationWithInsurance |
+| job detail | GET | /api/jobs/{uuid}/GetLocationImageUrl | (none) | 2 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/GetLocationImageUrl |
+| job detail | GET | /api/jobOverview/{uuid}/GetJobMilestones | (none) | 2 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobMilestones |
+| job detail | GET | /api/v3/job-workflows/{uuid} | (none) | 2 | /api/v3/job-workflows/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| job detail | GET | /api/v3/job-workflows/{uuid}/can-cancel | (none) | 2 | /api/v3/job-workflows/ea2d3425-8049-4902-9632-3e9df8043d7b/can-cancel |
+| job detail | GET | /api/jobs/{uuid}/accounts-receivable | (none) | 7 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/accounts-receivable |
+| job detail | GET | /api/v3/jobs/{uuid}/current-job-milestone | (none) | 14 | /api/v3/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/current-job-milestone |
+| job detail | GET | /api/jobs/{uuid}/GetJobBootstrap | (none) | 11 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobBootstrap |
+| job detail | GET | /api/measurement/GetJobMeasurements/{uuid} | (none) | 5 | /api/measurement/GetJobMeasurements/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| job detail | GET | /api/measurement/GetJobMeasurementOrders | jobID | 2 | /api/measurement/GetJobMeasurementOrders?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| job detail | GET | /api/JobPackets/GetPacketCounts/{uuid} | (none) | 2 | /api/JobPackets/GetPacketCounts/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| job detail | GET | /api/jobOverview/{uuid}/GetOrderTrades | (none) | 2 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetOrderTrades |
+| job detail | GET | /api/jobs/{uuid}/Tasks | (none) | 2 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/Tasks |
+| job detail | GET | /api/v4/jobs/{uuid}/communications/filters | (none) | 1 | /api/v4/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/communications/filters |
+| job detail | POST | /api/v4/jobs/{uuid}/communications/filter/options | (none) | 1 | /api/v4/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/communications/filter/options |
+| job detail | GET | /api/v4/jobs/{uuid}/communications/pins | (none) | 1 | /api/v4/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/communications/pins |
+| job detail | POST | /api/v4/jobs/{uuid}/communications/threads | (none) | 5 | /api/v4/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/communications/threads |
+| job detail | GET | /api/v3/jobs/{uuid}/ably-authenticator | rnd | 1 | /api/v3/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/ably-authenticator?rnd=9745365528326762 |
+| job detail | POST | /api/v4/jobs/{uuid}/communications/thread/{uuid}/meta | (none) | 22 | /api/v4/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/communications/thread/3447ac43-3114-4735-877a-b7d7dbad81d4/meta |
+| job detail | GET | /api/Jobs/GetBasicJobForOrder/{uuid} | (none) | 1 | /api/Jobs/GetBasicJobForOrder/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| job detail | GET | /api/Measurement/{uuid}/GetJobMeasurements | (none) | 1 | /api/Measurement/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobMeasurements |
+| job detail | GET | /api/v4/job-measurements/{uuid}/view-measurements | (none) | 1 | /api/v4/job-measurements/ea2d3425-8049-4902-9632-3e9df8043d7b/view-measurements |
+| job detail | GET | /api/Measurement/GetJobMeasurementOrders | jobID | 1 | /api/Measurement/GetJobMeasurementOrders?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| users/assignment | GET | /api/v3/user/settings | settings | 17 | /api/v3/user/settings?settings=dontShowCrewAppFreeTrialModal_Feb242025-2 |
+| users/assignment | GET | /api/jobs/{uuid}/GetCurrentUserRole | (none) | 13 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/GetCurrentUserRole |
+| users/assignment | GET | /api/v3/user | (none) | 5 | /api/v3/user |
+| users/assignment | GET | /api/v3/companyusers/current | (none) | 5 | /api/v3/companyusers/current |
+| users/assignment | GET | /api/v3/jobs/{uuid}/view-user-access | (none) | 1 | /api/v3/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/view-user-access |
+| users/assignment | GET | /api/v3/companyusers | (none) | 1 | /api/v3/companyusers |
+| users/assignment | GET | /api/v3/crew-app/is-enabled | (none) | 19 | /api/v3/crew-app/is-enabled |
+| users/assignment | GET | /api/v3/companyusers/super-admin | (none) | 1 | /api/v3/companyusers/super-admin |
+| users/assignment | GET | /api/Company/{uuid}/CompanyUser | (none) | 2 | /api/Company/ea2d3425-8049-4902-9632-3e9df8043d7b/CompanyUser |
+| users/assignment | GET | /api/v3/crews | (none) | 1 | /api/v3/crews |
+| users/assignment | GET | /api/v3/users/{uuid}/settings | settings | 1 | /api/v3/users/15b30497-a6f2-44d9-b824-158adf732f13/settings?settings=reportsAddFavorite,reportsHideFavorite,reportsUnHideReport,reportsHideReport,reportsShare,reportLibraryLearnMore,reportsLearnMore,dashboardLibraryLearnMore,dashboardsLearnMore,scheduledReportsLearnMore,reportingSave,reportsPlusLearnMore |
+| users/assignment | GET | /api/v3/reports/haspermissiontocopy | (none) | 1 | /api/v3/reports/haspermissiontocopy |
+| users/assignment | GET | /api/v3/reports | onlyBasic | 1 | /api/v3/reports?onlyBasic=false |
+| contacts | GET | /api/jobs/IsSupplierOrderingEnabled | (none) | 2 | /api/jobs/IsSupplierOrderingEnabled |
+| contacts | GET | /api/v3/customer-portal/{uuid}/overview-panel-info | (none) | 5 | /api/v3/customer-portal/ea2d3425-8049-4902-9632-3e9df8043d7b/overview-panel-info |
+| contacts | GET | /api/v3/customer-portal/{uuid}/active-invites | (none) | 3 | /api/v3/customer-portal/ea2d3425-8049-4902-9632-3e9df8043d7b/active-invites |
+| contacts | GET | /api/jobOverview/{uuid}/GetJobContacts | (none) | 3 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobContacts |
+| contacts | GET | /api/v3/customer-portal/jobs/{uuid}/job-message-post-state | (none) | 20 | /api/v3/customer-portal/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/job-message-post-state |
+| contacts | GET | /api/Suppliers/GetAvailableSuppliers | (none) | 3 | /api/Suppliers/GetAvailableSuppliers |
+| contacts | GET | /api/Suppliers/GetCustomerInformation | jobId&lat&lng&supplierID | 1 | /api/Suppliers/GetCustomerInformation?jobId=&lat=39.1119022&lng=-108.5494763&supplierID=14a7f2e3-251a-463d-a9b4-a89f1b394448 |
+| contacts | POST | /api/Suppliers/PostCatalogItemForPricing | jobID&supplierBranchID&supplierCustomerID&supplierID&supplierVendorAccountID | 26 | /api/Suppliers/PostCatalogItemForPricing?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b&supplierBranchID=875bf619-a562-4b0f-9b09-5da7566a095c&supplierCustomerID=211678e6-7b55-4e7e-a244-848e4da6f2f5&supplierID=14a7f2e3-251a-463d-a9b4-a89f1b394448&supplierVendorAccountID=8872efd0-7afc-47d8-8a45-3ad3cd815ece |
+| contacts | POST | /api/Catalog/AreAccuLynxItemsAvailableForSupplierBranch | supplierBranchId | 1 | /api/Catalog/AreAccuLynxItemsAvailableForSupplierBranch?supplierBranchId=875bf619-a562-4b0f-9b09-5da7566a095c |
+| contacts | GET | /api/Suppliers/GetAllAvailableCustomerInformation | (none) | 2 | /api/Suppliers/GetAllAvailableCustomerInformation |
+| contacts | GET | /api/Suppliers/GetCustomerInformation | jobId&lat&lng | 1 | /api/Suppliers/GetCustomerInformation?jobId=ea2d3425-8049-4902-9632-3e9df8043d7b&lat=39.1119022&lng=-108.5494763 |
+| contacts | GET | /api/Company/GetCompanyContactSettings | (none) | 1 | /api/Company/GetCompanyContactSettings |
+| contacts | POST | /api/Suppliers/GetSkuWarnings | (none) | 1 | /api/Suppliers/GetSkuWarnings |
+| contacts | GET | /api/v2/joboverview/{uuid}/contacts | (none) | 1 | /api/v2/joboverview/ea2d3425-8049-4902-9632-3e9df8043d7b/contacts |
+| contacts | POST | /api/jobs/{uuid}/UpdateContact | (none) | 1 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/UpdateContact |
+| financials | GET | /api/v3/finance/{uuid}/get-overview-loan-data | (none) | 2 | /api/v3/finance/ea2d3425-8049-4902-9632-3e9df8043d7b/get-overview-loan-data |
+| financials | GET | /api/jobs/{uuid}/financial-progress | (none) | 13 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/financial-progress |
+| financials | GET | /api/Estimatev3/GetEstimates/{uuid} | (none) | 2 | /api/Estimatev3/GetEstimates/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| financials | GET | /api/v3/finance/{uuid}/get-as-low-as-information | (none) | 2 | /api/v3/finance/ea2d3425-8049-4902-9632-3e9df8043d7b/get-as-low-as-information |
+| financials | GET | /api/EstimateV3/GetEstimatePermissions | (none) | 3 | /api/EstimateV3/GetEstimatePermissions |
+| financials | GET | /api/EstimateV3/{uuid}/GetEstimates | (none) | 2 | /api/EstimateV3/ea2d3425-8049-4902-9632-3e9df8043d7b/GetEstimates |
+| financials | GET | /api/EstimateV3/GetEstimatePreviewInformation/{uuid} | (none) | 1 | /api/EstimateV3/GetEstimatePreviewInformation/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| financials | GET | /api/EstimateV3/{uuid} | (none) | 1 | /api/EstimateV3/b993e543-b7d8-c9d4-aaf6-7a310a617a31 |
+| financials | GET | /api/EstimateV3/GetCompanyTaxRates | (none) | 1 | /api/EstimateV3/GetCompanyTaxRates |
+| financials | POST | /api/EstimateV3/ | (none) | 1 | /api/EstimateV3/ |
+| financials | GET | /api/jobs/{uuid}/financial-total-for-worksheet | (none) | 7 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/financial-total-for-worksheet |
+| financials | GET | /api/v4/financial-worksheet/{uuid} | (none) | 1 | /api/v4/financial-worksheet/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| financials | GET | /api/jobs/{uuid}/financial-total-for-invoice | (none) | 7 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/financial-total-for-invoice |
+| financials | GET | /api/jobs/{uuid}/invoices/ | (none) | 1 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/invoices/ |
+| financials | GET | /api/jobs/{uuid}/invoices/new | (none) | 1 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/invoices/new |
+| financials | GET | /api/invoices/view-terms | (none) | 1 | /api/invoices/view-terms |
+| financials | GET | /api/EstimateV3/GetPrimaryEstimate/{uuid} | (none) | 1 | /api/EstimateV3/GetPrimaryEstimate/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| financials | GET | /api/EstimateV3/{uuid}/GetNewEstimates | (none) | 1 | /api/EstimateV3/ea2d3425-8049-4902-9632-3e9df8043d7b/GetNewEstimates |
+| financials | GET | /api/jobs/{uuid}/get-financial-worksheet-overview | (none) | 2 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/get-financial-worksheet-overview |
+| documents/files/photos | GET | /api/v3/media/job/{uuid}/view-media | useAbsoluteUrls | 1 | /api/v3/media/job/ea2d3425-8049-4902-9632-3e9df8043d7b/view-media?useAbsoluteUrls=false |
+| documents/files/photos | GET | /api/v3/media/view-tags | includeSystemTags | 1 | /api/v3/media/view-tags?includeSystemTags=true |
+| documents/files/photos | GET | /api/v3/album/job/{uuid}/view-job-albums | (none) | 1 | /api/v3/album/job/ea2d3425-8049-4902-9632-3e9df8043d7b/view-job-albums |
+| documents/files/photos | GET | /api/v3/media/view-delete-permissions | (none) | 1 | /api/v3/media/view-delete-permissions |
+| documents/files/photos | POST | /api/v3/media/view-company-users | (none) | 1 | /api/v3/media/view-company-users |
+| documents/files/photos | GET | /api/v3/media/job/{uuid}/view-insurance-claim-number | (none) | 1 | /api/v3/media/job/ea2d3425-8049-4902-9632-3e9df8043d7b/view-insurance-claim-number |
+| documents/files/photos | GET | /api/v3/media/view-company-information | (none) | 1 | /api/v3/media/view-company-information |
+| documents/files/photos | GET | /api/v3/media/{uuid}/view-media-file-messages | (none) | 2 | /api/v3/media/c8f9c05d-e7a4-40be-825a-53bbddc0adfa/view-media-file-messages |
+| documents/files/photos | GET | /api/v4/job-documents/{uuid}/job-document-folders | (none) | 2 | /api/v4/job-documents/ea2d3425-8049-4902-9632-3e9df8043d7b/job-document-folders |
+| documents/files/photos | GET | /api/v4/job-documents/smart-docs-company-settings | (none) | 2 | /api/v4/job-documents/smart-docs-company-settings |
+| notes/activity | GET | /api/dashboard/GetActivityFeed | (none) | 3 | /api/dashboard/GetActivityFeed |
+| notes/activity | GET | /api/jobOverview/{uuid}/GetJobActivityCount | (none) | 10 | /api/jobOverview/ea2d3425-8049-4902-9632-3e9df8043d7b/GetJobActivityCount |
+| notes/activity | GET | /api/jobs/{uuid}/JobMessageFeed | page&query&sort | 2 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/JobMessageFeed?page=1&query=&sort=createdDate%7Cdesc |
+| notes/activity | GET | /api/jobs/{uuid}/JobMessageFeed | countOnly&sort | 1 | /api/jobs/ea2d3425-8049-4902-9632-3e9df8043d7b/JobMessageFeed?countOnly=true&sort=createdDate%7Cdesc |
+| webhook/config | GET | /api/v3/accounting-integration/active-providers | (none) | 1 | /api/v3/accounting-integration/active-providers |
+| other (business) | GET | /api/dashboard/GetCurrentPipeline | (none) | 3 | /api/dashboard/GetCurrentPipeline |
+| other (business) | GET | /api/dashboard/GetSalesLeaderBoard | endDate&startDate | 3 | /api/dashboard/GetSalesLeaderBoard?endDate=2026-04-01&startDate=2026-03-01 |
+| other (business) | GET | /api/v3/dashboard/action-items | (none) | 3 | /api/v3/dashboard/action-items |
+| other (business) | GET | /api/v3/dashboard/accounts-receivable | (none) | 3 | /api/v3/dashboard/accounts-receivable |
+| other (business) | GET | /api/CreateLead/canDistribute | (none) | 2 | /api/CreateLead/canDistribute |
+| other (business) | GET | /api/v3/leads/dead-reasons | (none) | 4 | /api/v3/leads/dead-reasons |
+| other (business) | GET | /api/CreateLead/isInsuranceEnabled | (none) | 2 | /api/CreateLead/isInsuranceEnabled |
+| other (business) | GET | /api/v4/tasks/ | jobId | 2 | /api/v4/tasks/?jobId=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/v4/tasks/completed | jobId | 2 | /api/v4/tasks/completed?jobId=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/v3/lead-intelligence/get-score/{uuid} | (none) | 2 | /api/v3/lead-intelligence/get-score/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/measurement/GetEagleviewOrders | jobID | 2 | /api/measurement/GetEagleviewOrders?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/v3/viewentities/messaging/{id}/description/{uuid} | (none) | 1 | /api/v3/viewentities/messaging/20/description/ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/v4/communications/tags | (none) | 23 | /api/v4/communications/tags |
+| other (business) | GET | /api/v3/marketplace/addons | (none) | 1 | /api/v3/marketplace/addons |
+| other (business) | GET | /api/v4/communications/preferences | (none) | 1 | /api/v4/communications/preferences |
+| other (business) | POST | /api/v4/communications/preferences | (none) | 2 | /api/v4/communications/preferences |
+| other (business) | GET | /api/Company/Trades | (none) | 3 | /api/Company/Trades |
+| other (business) | GET | /api/Template/GetTemplates | (none) | 3 | /api/Template/GetTemplates |
+| other (business) | GET | /api/Template/GetMeasurements | (none) | 1 | /api/Template/GetMeasurements |
+| other (business) | GET | /api/Catalog/GetUnits | (none) | 2 | /api/Catalog/GetUnits |
+| other (business) | GET | /api/v3/permissions/{uuid}/isallowed | (none) | 7 | /api/v3/permissions/60A15C76-1A41-4CE5-9380-9D3B554282E9/isallowed |
+| other (business) | GET | /api/v3/trades | (none) | 1 | /api/v3/trades |
+| other (business) | GET | /api/v3/accountsettings/get-worksheet-default-type | (none) | 1 | /api/v3/accountsettings/get-worksheet-default-type |
+| other (business) | GET | /api/quickbooks/connection-status | jobId | 1 | /api/quickbooks/connection-status?jobId=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/OrdersList/{uuid}/GetPartialOrders | (none) | 1 | /api/OrdersList/ea2d3425-8049-4902-9632-3e9df8043d7b/GetPartialOrders |
+| other (business) | GET | /api/OrdersList/GetOrderStatuses | (none) | 1 | /api/OrdersList/GetOrderStatuses |
+| other (business) | GET | /api/Template/GetSlopeCalculationSettings | (none) | 1 | /api/Template/GetSlopeCalculationSettings |
+| other (business) | GET | /api/Orders/{uuid} | (none) | 1 | /api/Orders/1997c542-6386-18a7-5e46-5af54e6f7a30 |
+| other (business) | GET | /api/Orders/GetCatalogTemplateForOrder | TemplateCompanyID&TemplateGroupName&TemplateID | 1 | /api/Orders/GetCatalogTemplateForOrder?TemplateCompanyID=3d9c514c-aed2-4a27-a6e8-ac4d45da6ca2&TemplateGroupName=&TemplateID=21d39af5-8dc7-4e4f-86a2-3465a464524c |
+| other (business) | GET | /api/Orders/GetPermissions | (none) | 1 | /api/Orders/GetPermissions |
+| other (business) | GET | /api/v3/Orders/is-po-number-valid | jobId&orderId&poNumber | 1 | /api/v3/Orders/is-po-number-valid?jobId=ea2d3425-8049-4902-9632-3e9df8043d7b&orderId=1997c542-6386-18a7-5e46-5af54e6f7a30&poNumber=5518-1 |
+| other (business) | GET | /api/Catalog/GetFavorites | (none) | 1 | /api/Catalog/GetFavorites |
+| other (business) | GET | /api/Measurement/IsEagleviewEnabled | (none) | 1 | /api/Measurement/IsEagleviewEnabled |
+| other (business) | GET | /api/Measurement/GetEVPermission | jobID | 1 | /api/Measurement/GetEVPermission?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/Measurement/GetMeasurementPermissions | measurementProviderID | 2 | /api/Measurement/GetMeasurementPermissions?measurementProviderID=5703ae51-682d-4e1a-adc4-8b9c8811ea8e |
+| other (business) | GET | /api/Diagram/{uuid}/GetDiagrams | (none) | 1 | /api/Diagram/ea2d3425-8049-4902-9632-3e9df8043d7b/GetDiagrams |
+| other (business) | GET | /api/v4/catalog-measurements/ | (none) | 1 | /api/v4/catalog-measurements/ |
+| other (business) | GET | /api/Measurement/GetEagleviewOrders | jobID | 1 | /api/Measurement/GetEagleviewOrders?jobID=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/CreateLead/GetCompanyStates | id | 1 | /api/CreateLead/GetCompanyStates?id=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/CreateLead/GetCompanyCountries | id | 1 | /api/CreateLead/GetCompanyCountries?id=ea2d3425-8049-4902-9632-3e9df8043d7b |
+| other (business) | GET | /api/v4/calendars | (none) | 1 | /api/v4/calendars |
+| other (business) | GET | /api/v4/calendars/preferences | (none) | 1 | /api/v4/calendars/preferences |
+| other (business) | GET | /api/v4/calendars/filters | (none) | 1 | /api/v4/calendars/filters |
+| other (business) | GET | /api/v3/companies/current | (none) | 1 | /api/v3/companies/current |
+| other (business) | GET | /api/v3/permissions/{uuid}/isallowed | permissionGroupId | 2 | /api/v3/permissions/1E50DFD7-27FA-43F0-9F8E-DE34D2068452/isallowed?permissionGroupId=1E50DFD7-27FA-43F0-9F8E-DE34D2068452 |
+| other (business) | GET | /api/v3/accounts/{uuid}/companies | (none) | 1 | /api/v3/accounts/6ab0065e-7f24-49cd-86cd-05c8d0c5fa48/companies |
+| other (business) | GET | /api/v2/status.json | (none) | 1 | /api/v2/status.json |
+
+4. Top Omitted Noise Categories (Removed from business count)
+- [Noise] GET /api/dashboard/GetActivityFeedCount (2 hits)
+- [Noise] POST /api/v1/sockets/poll/{id} (53 hits)
+- [Noise] GET /api/v4/atme/view-unacknowledge-type-counts (22 hits)
+- [Noise] GET /api/v3/ably/authenticate (11 hits)
+- [Noise] POST /api/v1/sockets/connect (11 hits)
+- [Noise] POST /api/v1/sockets/connectStatus (5 hits)
+- [Noise] GET /api/v3/features/is-allowed (51 hits)
+- [Noise] GET /api/v1/sockets/poll/{id} (20 hits)

@@ -63,3 +63,4 @@ export function FloatingQuickTask({ x, y, jobId, onClose, onCreate }: FloatingQu
     );
 }
  
+ 
