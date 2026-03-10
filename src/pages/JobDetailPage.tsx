@@ -106,3 +106,4 @@ export function JobDetailPage({ jobId }: JobDetailPageProps) {
         </div>
     );
 }
+ 

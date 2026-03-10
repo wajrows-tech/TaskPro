@@ -44,3 +44,4 @@ try {
     console.error('[Seed] ❌ Failed to seed and backfill:', error);
     process.exit(1);
 }
+ 

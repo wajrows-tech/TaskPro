@@ -908,3 +908,4 @@ export function DayPlanner({ tasks, jobs, onUpdateTaskField, onBatchUpdateTask, 
         </DragDropContext>
     );
 }
+ 

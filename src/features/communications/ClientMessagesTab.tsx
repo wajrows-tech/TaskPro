@@ -287,3 +287,4 @@ export function ClientMessagesTab({ contactId, jobId }: ClientMessagesTabProps) 
         </div>
     );
 }
+ 

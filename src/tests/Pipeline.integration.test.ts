@@ -109,3 +109,4 @@ describe('End-to-End Pipeline Integration', () => {
         expect(job.stage).to.equal('closed');
     });
 });
+ 

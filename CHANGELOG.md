@@ -46,3 +46,4 @@ This project follows [Semantic Versioning](https://semver.org/):
 - Basic job and contact CRUD
 - Vite + React + TypeScript frontend
 - Express + SQLite backend
+ 

@@ -21,3 +21,4 @@ export class AgentService {
         db.prepare('UPDATE agent_audit_log SET approved = 1 WHERE id = ?').run(id);
     }
 }
+ 

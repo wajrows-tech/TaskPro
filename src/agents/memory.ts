@@ -154,3 +154,4 @@ function parseRow(row: any): MemoryEntry {
     try { value = JSON.parse(value); } catch { /* keep as string */ }
     return { ...row, value };
 }
+ 

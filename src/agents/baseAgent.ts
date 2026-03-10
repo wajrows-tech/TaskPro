@@ -131,3 +131,4 @@ export abstract class BaseAgent {
     /** Generate a status summary for the dashboard UI */
     abstract getStatus(): { summary: string; health: 'idle' | 'active' | 'error'; lastAction?: string };
 }
+ 

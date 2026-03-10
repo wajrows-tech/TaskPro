@@ -67,3 +67,4 @@ contactRouter.delete('/jobs/:jobId/contacts/:contactId', requireAuth, (req, res,
         next(e);
     }
 });
+ 

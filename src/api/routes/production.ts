@@ -63,3 +63,4 @@ productionRouter.put('/checklists/:id', requireAuth, (req, res, next) => {
 productionRouter.delete('/checklists/:id', requireAuth, (req, res, next) => {
     try { ProductionService.deleteChecklist(req.user!, Number(req.params.id)); res.json({ success: true }); } catch (e) { next(e); }
 });
+ 

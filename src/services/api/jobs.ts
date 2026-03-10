@@ -11,3 +11,4 @@ export const linkJobContact = (jobId: number, contactId: number, role?: string) 
     request<{ success: boolean }>(`/jobs/${jobId}/contacts`, { method: 'POST', body: JSON.stringify({ contactId, role }) });
 export const unlinkJobContact = (jobId: number, contactId: number) =>
     request<{ success: boolean }>(`/jobs/${jobId}/contacts/${contactId}`, { method: 'DELETE' });
+ 

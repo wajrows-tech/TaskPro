@@ -109,3 +109,4 @@ export function ContactDetailPage({ contactId }: ContactDetailPageProps) {
         </div>
     );
 }
+ 

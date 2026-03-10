@@ -35,3 +35,4 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
         ...(process.env.NODE_ENV !== 'production' ? { stack: err.stack } : {})
     });
 };
+ 

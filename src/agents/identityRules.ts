@@ -13,3 +13,4 @@ export const AGENT_DOMAIN_RULES = {
         "Subsystem pillars must never rename or replace the platform identity"
     ]
 };
+ 

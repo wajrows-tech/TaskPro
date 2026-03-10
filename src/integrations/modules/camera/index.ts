@@ -52,3 +52,4 @@ export const cameraIntegration: IntegrationModule = {
         return { healthy: true, latencyMs: 0, checkedAt: new Date().toISOString() };
     }
 };
+ 

@@ -112,3 +112,4 @@ agentRouter.get('/agents/events/recent', (req, res, next) => {
         res.json(eventBus.getRecentEvents(limit));
     } catch (e) { next(e); }
 });
+ 

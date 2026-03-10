@@ -51,3 +51,4 @@ syncRouter.post('/sync/flush', requireAuth, (req: any, res) => {
         res.status(e.statusCode || 500).json({ error: e.message });
     }
 });
+ 

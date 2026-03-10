@@ -42,3 +42,4 @@ export function buildUpdate(table: string, id: string | number, data: Record<str
     db.prepare(`UPDATE ${table} SET ${sets} WHERE id = ?`).run(...values, id);
     return true;
 }
+ 

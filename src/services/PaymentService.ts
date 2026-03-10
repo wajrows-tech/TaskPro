@@ -57,3 +57,4 @@ export class PaymentService {
         return db.prepare('SELECT * FROM payments WHERE id = ?').get(id) as Payment;
     }
 }
+ 

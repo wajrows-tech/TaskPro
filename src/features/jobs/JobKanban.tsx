@@ -133,3 +133,4 @@ export function JobKanban() {
         </div>
     );
 }
+ 

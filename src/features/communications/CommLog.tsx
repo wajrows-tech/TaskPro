@@ -69,3 +69,4 @@ export function CommLog({ jobId, contactId }: CommLogProps) {
         </div>
     );
 }
+ 

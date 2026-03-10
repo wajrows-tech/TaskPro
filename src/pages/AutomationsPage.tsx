@@ -208,3 +208,4 @@ function AuditTable({ logs }: { logs: any[] }) {
         </table>
     );
 }
+ 

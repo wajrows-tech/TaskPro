@@ -85,3 +85,4 @@ export class UserService {
         db.prepare('UPDATE users SET lastLoginAt = CURRENT_TIMESTAMP WHERE id = ?').run(id);
     }
 }
+ 

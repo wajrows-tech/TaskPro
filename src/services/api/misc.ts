@@ -28,3 +28,4 @@ export interface SearchResults {
 }
 
 export const search = (query: string) => request<SearchResults>(`/search?q=${encodeURIComponent(query)}`);
+ 

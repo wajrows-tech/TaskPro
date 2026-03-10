@@ -6,3 +6,4 @@ export const createCommunication = (data: Partial<Communication>) => request<Com
 export const updateCommunication = (id: number, data: Partial<Communication>) => request<Communication>(`/communications/${id}`, { method: 'PUT', body: JSON.stringify(data) });
 export const deleteCommunication = (id: number) => request<{ success: boolean }>(`/communications/${id}`, { method: 'DELETE' });
 export const getJobCommunications = (jobId: number) => request<Communication[]>('/communications').then(comms => comms.filter(c => c.jobId === jobId));
+ 

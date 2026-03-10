@@ -10,3 +10,4 @@ try {
     console.error('[CLI] Migration failed:', error);
     process.exit(1);
 }
+ 

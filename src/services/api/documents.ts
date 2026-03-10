@@ -16,3 +16,4 @@ export const createDocument = async (jobId: number, file: File): Promise<Documen
 };
 
 export const deleteDocument = (id: number) => request<{ success: boolean }>(`/documents/${id}`, { method: 'DELETE' });
+ 

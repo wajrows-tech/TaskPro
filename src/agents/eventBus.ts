@@ -66,3 +66,4 @@ class CRMEventBus extends EventEmitter {
 
 /** Singleton event bus instance */
 export const eventBus = new CRMEventBus();
+ 

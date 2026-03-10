@@ -53,3 +53,4 @@ export function StatusDot({ status, label }: StatusDotProps) {
         </span>
     );
 }
+ 

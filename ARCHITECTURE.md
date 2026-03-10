@@ -45,3 +45,4 @@
 *   When fixing a bug or adding a feature, leave the file cleaner than you found it. 
 *   Shrink oversized files by extracting cohesive logic into utilities or domain concepts.
 *   Reuse healthy patterns instead of inventing ad-hoc ones.
+ 

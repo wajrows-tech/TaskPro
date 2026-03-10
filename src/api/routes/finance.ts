@@ -82,3 +82,4 @@ financeRouter.put('/payments/:id', requireAuth, (req, res, next) => {
         res.json(PaymentService.updatePayment(req.user!, Number(req.params.id), req.body));
     } catch (e) { next(e); }
 });
+ 

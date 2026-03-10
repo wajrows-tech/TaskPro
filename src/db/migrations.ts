@@ -770,3 +770,4 @@ export function generateJobNumber(): string {
     const count = (db.prepare('SELECT COUNT(*) as c FROM jobs WHERE jobNumber LIKE ?').get(`JOB - ${year} -% `) as any)?.c || 0;
     return `JOB - ${year} -${String(count + 1).padStart(3, '0')} `;
 }
+ 

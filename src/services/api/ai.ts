@@ -14,3 +14,4 @@ export const getAiSuggestions = () => request<any[]>('/ai/suggestions');
 // Agent Governance
 export const getPendingApprovals = () => request<any[]>('/agents/pending');
 export const approveAgentAction = (id: number) => request<any>(`/agents/approve/${id}`, { method: 'POST' });
+ 

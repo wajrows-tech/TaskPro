@@ -127,3 +127,4 @@ export function EstimateBuilder({ open, onClose, jobId }: EstimateBuilderProps) 
         </Modal>
     );
 }
+ 

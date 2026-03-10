@@ -61,3 +61,4 @@ documentRouter.delete('/documents/:id', (req, res, next) => {
         next(e);
     }
 });
+ 

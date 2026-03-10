@@ -121,3 +121,4 @@ portalRouter.get('/jobs/:jobId/documents', requirePortalAuth, (req: any, res) =>
         res.status(e.statusCode || 500).json({ error: e.message });
     }
 });
+ 

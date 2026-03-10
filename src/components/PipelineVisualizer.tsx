@@ -453,3 +453,4 @@ export function PipelineVisualizer({ jobs, tasks, onStageChange, onJobClick, onA
     </div>
   );
 }
+ 

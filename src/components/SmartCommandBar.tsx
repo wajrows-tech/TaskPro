@@ -240,3 +240,4 @@ export function SmartCommandBar({
         </div>
     );
 }
+ 

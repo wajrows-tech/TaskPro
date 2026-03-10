@@ -26,3 +26,4 @@ export class SearchService {
         return { jobs, contacts, tasks, communications };
     }
 }
+ 

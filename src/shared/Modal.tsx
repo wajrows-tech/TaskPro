@@ -64,3 +64,4 @@ export function Modal({ open, onClose, title, children, size = 'md', className }
         </AnimatePresence>
     );
 }
+ 

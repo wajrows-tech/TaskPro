@@ -153,3 +153,4 @@ export function FinanceTab({ jobId }: FinanceTabProps) {
         </div>
     );
 }
+ 

@@ -66,3 +66,4 @@ export function StatCard({ label, value, icon, trend, color = '#6C5CE7' }: StatC
         </Card>
     );
 }
+ 

@@ -717,3 +717,4 @@ export function ProjectMap({ tasks, jobs, dependencies, onTaskClick, onAddDepend
         </div>
     );
 }
+ 

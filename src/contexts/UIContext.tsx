@@ -97,3 +97,4 @@ export function useUI(): UIContextValue {
     if (!ctx) throw new Error('useUI must be used within <UIProvider>');
     return ctx;
 }
+ 

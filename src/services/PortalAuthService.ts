@@ -89,3 +89,4 @@ export class PortalAuthService {
         return { user: portalUser!, token: jwtToken };
     }
 }
+ 

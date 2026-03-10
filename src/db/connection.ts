@@ -20,3 +20,4 @@ if (!isTest) {
     db.pragma('journal_mode = WAL');
 }
 db.pragma('foreign_keys = ON');
+ 

@@ -288,3 +288,4 @@ function ConfigModal({ module, onClose, onSaved }: { module: IntegrationView, on
         </div>
     );
 }
+ 

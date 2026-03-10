@@ -329,3 +329,4 @@ export function FocusTimer({ tasks, onComplete, onClose }: FocusTimerProps) {
         </motion.div>
     );
 }
+ 

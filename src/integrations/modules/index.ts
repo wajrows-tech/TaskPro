@@ -20,3 +20,4 @@ export const INTEGRATION_MODULES = [
     aiSelfAgentIntegration,
     webhookRelayIntegration
 ];
+ 
